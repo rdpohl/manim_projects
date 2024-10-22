@@ -1,0 +1,3 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/richardpohl/my-manim/projects/PrincipiaAxiomsScholiumExample1/media/videos/main/1080p30/partial_movie_files/ArgMinExample/3445125925_822966917_2953399017.mp4'
+file 'file:/Users/richardpohl/my-manim/projects/PrincipiaAxiomsScholiumExample1/media/videos/main/1080p30/partial_movie_files/ArgMinExample/1025971384_1704852926_1418659514.mp4'
