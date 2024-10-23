@@ -9,6 +9,7 @@ class ParalellogramProjectile(Scene):
         document here
     '''
     def construct(self):
+
         ax = Axes(
             x_range     = [-2, 10, 1],
             y_range     = [-2, 10, 1],
@@ -42,7 +43,7 @@ class ParalellogramProjectile(Scene):
         line_AB.put_start_and_end_on(dot_A.get_center(), dot_B.get_center())
         line_AB.set_color(BLACK)
         self.add(dot_B, dot_B_Text)
-        self.play(Write(dot_C_Text))
+        self.play(Write(dot_B_Text))
         self.play(Write(line_AB))
 
         dot_D = Dot(ax.coords_to_point(5,1), color=BLACK)
@@ -60,14 +61,7 @@ class ParalellogramProjectile(Scene):
         line_DC.set_color(BLACK)
         self.play(Write(line_DC))
 
-        t = ValueTracker(0)
-
-        def func(x):
-            return x + 1
-        graph = ax.plot(func, color=MAROON)
+        graph = ax.plot(lambda x: (19+ (x**2) * -1) / 3.8, color=RED).shift(RIGHT)
         self.add(graph)
-
-        x_space = np.linspace(*ax.x_range[:2],200)
-        minimum_index = func(x_space).argmin()
-
-        #self.play(t.animate.set_value(x_space[minimum_index]), run_time=1)
+        self.play(Write(graph))
+        self.wait(3)
