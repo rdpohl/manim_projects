@@ -70,4 +70,4 @@ class ParalellogramProjectile(Scene):
         x_space = np.linspace(*ax.x_range[:2],200)
         minimum_index = func(x_space).argmin()
 
-        self.play(t.animate.set_value(x_space[minimum_index]), run_time=1)
+        #self.play(t.animate.set_value(x_space[minimum_index]), run_time=1)
