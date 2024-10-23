@@ -1,2 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:/Users/richardpohl/my-manim/projects/PrincipiaAxiomsScholiumExample1/media/videos/main/1080p30/partial_movie_files/DefaultTemplate/3445125925_41213021_223132457.mp4'
