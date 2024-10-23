@@ -162,7 +162,7 @@ cython_debug/
 #.idea/
 
 # manim build files
-.svg
-.png
-.tex
-.mp4
+*.svg
+*.png
+*.tex
+*.mp4
