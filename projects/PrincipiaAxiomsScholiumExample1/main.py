@@ -17,7 +17,7 @@ class ParalellogramProjectile(Scene):
         )
         ax.set_color(BLACK)
         labels = ax.get_axis_labels(x_label="Distance",
-                                    y_label="Height")
+                                    y_label="Gravity")
         labels.set_color(BLACK)
         self.next_section()
         self.add(ax, labels)
@@ -77,7 +77,7 @@ class ParalellogramProjectile(Scene):
 
         graph = DashedVMobject(
             ax.plot(
-                lambda x: (19 + (x**2) * -1) / 3.83,
+                lambda x: (19 + (x**2) * -1) / 3.85,
                 x_range=[0, 4, 0.001],
                 color=BLACK),
             num_dashes=60).shift(RIGHT)
@@ -95,4 +95,9 @@ class ParalellogramProjectile(Scene):
         self.play(
             Write(formula)
         )
-        self.wait(4)
+        self.wait(2)
+
+if __name__ == "__main__":
+    sceneOne = ParalellogramProjectile()
+    sceneOne.render()
+    #open_media_file(sceneOne.renderer.file_writer.movie_file_path)
