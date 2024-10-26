@@ -5,6 +5,7 @@ From Newton's Principia, Axioms,
 '''
 
 from manim import *
+from manim_physics import *
 
 class TwoSwingingBalls(Scene):
     '''
@@ -15,7 +16,9 @@ class TwoSwingingBalls(Scene):
         ax = Axes(
             x_range=[-1,10,1],
             y_range=[-1,10,1],
-            axis_config={"include_numbers": True,}
+            axis_config={"include_numbers": True,},
+            x_length=10.89,
+            y_length=6.5,
         )
         ax.set_color(BLACK)
         labels = ax.get_axis_labels(x_label="X",
@@ -23,6 +26,7 @@ class TwoSwingingBalls(Scene):
         labels.set_color(BLACK)
         self.add(ax, labels)
 
+        #set in the dots
         dot_E  = Dot(ax.coords_to_point(1,7), color=BLACK)
         dot_G  = Dot(ax.coords_to_point(2,7), color=BLACK)
         dot_F  = Dot(ax.coords_to_point(7,7), color=BLACK)
@@ -32,6 +36,7 @@ class TwoSwingingBalls(Scene):
         dots_group = VGroup(dot_E,dot_G, dot_F,dot_H, dot_C, dot_D)
         self.add(dots_group)
 
+        #add the labels for the dots
         E_Text    = Text('E').scale(0.5).next_to(dot_E, UP*0.3)
         E_Text.set_color(BLACK)
         #self.play(Write(E_Text))
@@ -53,38 +58,63 @@ class TwoSwingingBalls(Scene):
         text_group = VGroup(E_Text, G_Text, C_Text, D_Text, F_Text, H_Text)
         self.play( Write(text_group))
 
+        #set in the line connecting the dots
         line_EH  = Line()
         line_EH.put_start_and_end_on(dot_E.get_center(),
                                      dot_H.get_center())
         line_EH.set_color(BLACK)
         self.play(Write(line_EH))
 
-        dot_A   = Dot(ax.coords_to_point(4,2), radius=0.4, color=BLACK)
+        #draw the weight labeled A 
+        dot_A   = Dot(ax.coords_to_point(4,2), radius=0.3, color=BLACK)
         dot_A_Text = Text('A').scale(0.5).next_to(dot_A, DOWN*0.3)
-        dot_A_Text.set_color(RED)
+        dot_A_Text.set_color(BLACK)
         self.add(dot_A)
         self.play(Write(dot_A_Text))
 
+        #draw line from C to A
         line_CA = Line()
         line_CA.put_start_and_end_on(dot_C.get_center(),
-                                     dot_A.get_center())
+                                     dot_A.get_top())
         line_CA.set_color(BLACK)
         self.play(Write(line_CA))
 
+        #draw the weight labeled B
         dot_B   = Dot(ax.coords_to_point(5,2), radius=0.2, color=BLACK)
         dot_B_Text = Text('B').scale(0.5).next_to(dot_B, DOWN*0.3)
         dot_B_Text.set_color(BLACK)
         self.add(dot_B)
         self.play(Write(dot_B_Text))
 
+        #draw the line from D to B
         line_DB = Line()
         line_DB.put_start_and_end_on(dot_D.get_center(),
                                      dot_B.get_center())
         line_DB.set_color(BLACK)
         self.play(Write(line_DB))
 
-        circle_C = Circle(radius=1, color=BLACK)
-        #circle_C.move_to([4, 7, 0])
-        self.add(circle_C)
+        #draw the template for arc ECF
+        radius = 3
+        start_angle = 0
+        arc_angle = PI * -1
+        arc_EAF = Arc(radius=radius, start_angle=start_angle, angle=arc_angle, arc_center=dot_C.get_center())
+        arc_EAF.set_color(BLACK)
+        #draw the template for arc GBH
+        arc_GBH = Arc(radius=radius, start_angle=start_angle, angle=arc_angle, arc_center=dot_D.get_center())
+        arc_GBH.set_color(BLACK)
+        self.add(arc_EAF, arc_GBH)
 
         self.wait(2)
+
+class PendulumExample(SpaceScene):
+    '''
+        document here
+    '''
+    def construct(self):
+        pends = VGroup(*[Pendulum(i) for i in np.linspace(1, 5, 7)])
+        pends.set_color(BLACK)
+        self.add(pends)
+        for p in pends:
+            self.make_rigid_body(*p.bobs)
+            p.start_swinging()
+        self.wait(10)
