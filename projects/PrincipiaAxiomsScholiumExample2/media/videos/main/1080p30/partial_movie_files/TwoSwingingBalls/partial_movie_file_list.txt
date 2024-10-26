@@ -1,8 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:/Users/richardpohl/Development/manim_projects/projects/PrincipiaAxiomsScholiumExample2/media/videos/main/1080p30/partial_movie_files/TwoSwingingBalls/3162306189_4055440618_1264029081.mp4'
-file 'file:/Users/richardpohl/Development/manim_projects/projects/PrincipiaAxiomsScholiumExample2/media/videos/main/1080p30/partial_movie_files/TwoSwingingBalls/1770797288_2570147462_2219725314.mp4'
-file 'file:/Users/richardpohl/Development/manim_projects/projects/PrincipiaAxiomsScholiumExample2/media/videos/main/1080p30/partial_movie_files/TwoSwingingBalls/1770797288_2685761631_597544128.mp4'
-file 'file:/Users/richardpohl/Development/manim_projects/projects/PrincipiaAxiomsScholiumExample2/media/videos/main/1080p30/partial_movie_files/TwoSwingingBalls/1770797288_2201528765_528361927.mp4'
-file 'file:/Users/richardpohl/Development/manim_projects/projects/PrincipiaAxiomsScholiumExample2/media/videos/main/1080p30/partial_movie_files/TwoSwingingBalls/1770797288_2280426051_424779879.mp4'
-file 'file:/Users/richardpohl/Development/manim_projects/projects/PrincipiaAxiomsScholiumExample2/media/videos/main/1080p30/partial_movie_files/TwoSwingingBalls/1770797288_1322081136_917344784.mp4'
-file 'file:/Users/richardpohl/Development/manim_projects/projects/PrincipiaAxiomsScholiumExample2/media/videos/main/1080p30/partial_movie_files/TwoSwingingBalls/1770797288_1165985053_268186005.mp4'
