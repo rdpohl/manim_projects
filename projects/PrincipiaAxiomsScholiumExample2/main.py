@@ -105,16 +105,3 @@ class TwoSwingingBalls(Scene):
         self.add(arc_EAF, arc_GBH)
 
         self.wait(2)
-
-class PendulumExample(SpaceScene):
-    '''
-        document here
-    '''
-    def construct(self):
-        pends = VGroup(*[Pendulum(i) for i in np.linspace(1, 5, 7)])
-        pends.set_color(BLACK)
-        self.add(pends)
-        for p in pends:
-            self.make_rigid_body(*p.bobs)
-            p.start_swinging()
-        self.wait(10)
