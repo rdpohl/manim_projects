@@ -5,7 +5,6 @@ From Newton's Principia, Axioms,
 '''
 
 from manim import *
-from manim_physics import *
 
 class TwoSwingingBalls(Scene):
     '''
@@ -93,7 +92,7 @@ class TwoSwingingBalls(Scene):
         line_DB.set_color(BLACK)
         self.play(Write(line_DB))
 
-        #draw the template for arc ECF
+        # #draw the template for arc ECF
         radius = 3
         start_angle = 0
         arc_angle = PI * -1
