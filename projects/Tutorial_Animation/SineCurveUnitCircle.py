@@ -18,10 +18,12 @@ class SineCurveUnitCircle(Scene):
 
         self.add(x_axis, y_axis)
         
-        #self.add_x_labels()
+        #self.add_x_labels()    #only gets error
         x_labels = [
-            MathTex("\pi"), MathTex("2 \pi"),
-            MathTex("3 \pi"), MathTex("4 \pi"),
+            MathTex("\\pi"),   #changed fromm \pi to \\pi
+            MathTex("2\\pi"),
+            MathTex("3\\pi"), 
+            MathTex("4\\pi"),
         ]
 
         for i in range(len(x_labels)):
@@ -43,10 +45,10 @@ class SineCurveUnitCircle(Scene):
         dot.move_to(orbit.point_from_proportion(0))
         self.t_offset = 0
         rate = 0.25
-
+    
         def go_around_circle(mob, dt):
             self.t_offset += (dt * rate)
-            # print(self.t_offset)
+            #print(self.t_offset)
             mob.move_to(orbit.point_from_proportion(self.t_offset % 1))
 
         def get_line_to_circle():
@@ -79,4 +81,4 @@ class SineCurveUnitCircle(Scene):
         self.wait(8.5)
 
         dot.remove_updater(go_around_circle)
-
+    

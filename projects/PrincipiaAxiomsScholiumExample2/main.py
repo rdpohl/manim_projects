@@ -64,10 +64,15 @@ class TwoSwingingBalls(Scene):
         line_EH.set_color(BLACK)
         self.play(Write(line_EH))
 
+        radius = 3
+        start_angle = 0
+        arc_angle = PI * -1
+
         #draw the weight labeled A 
-        dot_A   = Dot(ax.coords_to_point(4,2), radius=0.3, color=BLACK)
+        A_Color = PURE_BLUE
+        dot_A   = Dot(ax.coords_to_point(4,2), radius=0.3, color=A_Color)
         dot_A_Text = Text('A').scale(0.5).next_to(dot_A, DOWN*0.3)
-        dot_A_Text.set_color(BLACK)
+        dot_A_Text.set_color(A_Color)
         self.add(dot_A)
         self.play(Write(dot_A_Text))
 
@@ -75,13 +80,26 @@ class TwoSwingingBalls(Scene):
         line_CA = Line()
         line_CA.put_start_and_end_on(dot_C.get_center(),
                                      dot_A.get_top())
-        line_CA.set_color(BLACK)
+        line_CA.set_color(A_Color)
         self.play(Write(line_CA))
 
+        # #draw the template for arc ECF        
+        arc_EAF = Arc(radius=radius, start_angle=start_angle, angle=arc_angle, arc_center=dot_C.get_center())
+        arc_EAF.set_color(A_Color)
+        self.play(Create(arc_EAF))
+
+        #create line CA Ball group
+        CA_Group = VGroup(line_CA, dot_A)
+        theta_tracker = ValueTracker(180)
+        rotation_center = LEFT
+        CA_Group.rotate(theta_tracker.get_value() * DEGREES, about_point=rotation_center )
+
+        '''
+        B_Color = ORANGE
         #draw the weight labeled B
-        dot_B   = Dot(ax.coords_to_point(5,2), radius=0.2, color=BLACK)
+        dot_B   = Dot(ax.coords_to_point(5,2), radius=0.2, color=B_Color)
         dot_B_Text = Text('B').scale(0.5).next_to(dot_B, DOWN*0.3)
-        dot_B_Text.set_color(BLACK)
+        dot_B_Text.set_color(B_Color)
         self.add(dot_B)
         self.play(Write(dot_B_Text))
 
@@ -89,18 +107,13 @@ class TwoSwingingBalls(Scene):
         line_DB = Line()
         line_DB.put_start_and_end_on(dot_D.get_center(),
                                      dot_B.get_center())
-        line_DB.set_color(BLACK)
+        line_DB.set_color(B_Color)
         self.play(Write(line_DB))
 
-        # #draw the template for arc ECF
-        radius = 3
-        start_angle = 0
-        arc_angle = PI * -1
-        arc_EAF = Arc(radius=radius, start_angle=start_angle, angle=arc_angle, arc_center=dot_C.get_center())
-        arc_EAF.set_color(BLACK)
         #draw the template for arc GBH
         arc_GBH = Arc(radius=radius, start_angle=start_angle, angle=arc_angle, arc_center=dot_D.get_center())
-        arc_GBH.set_color(BLACK)
-        self.add(arc_EAF, arc_GBH)
+        arc_GBH.set_color(B_Color)
+        self.play(Create(arc_GBH))
+        '''
 
         self.wait(2)
