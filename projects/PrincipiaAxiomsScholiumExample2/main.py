@@ -68,7 +68,7 @@ class TwoSwingingBalls(Scene):
         start_angle = 0
         arc_angle = PI * -1
 
-        #draw the weight labeled A 
+        #draw the weight labeled A
         A_Color = PURE_BLUE
         dot_A   = Dot(ax.coords_to_point(4,2), radius=0.3, color=A_Color)
         dot_A_Text = Text('A').scale(0.5).next_to(dot_A, DOWN*0.3)
@@ -83,17 +83,44 @@ class TwoSwingingBalls(Scene):
         line_CA.set_color(A_Color)
         self.play(Write(line_CA))
 
-        # #draw the template for arc ECF        
+        # #draw the template for arc ECF
         arc_EAF = Arc(radius=radius, start_angle=start_angle, angle=arc_angle, arc_center=dot_C.get_center())
         arc_EAF.set_color(A_Color)
         self.play(Create(arc_EAF))
 
         #create line CA Ball group
-        CA_Group = VGroup(line_CA, dot_A)
-        theta_tracker = ValueTracker(180)
-        rotation_center = LEFT
-        CA_Group.rotate(theta_tracker.get_value() * DEGREES, about_point=rotation_center )
+        CA_Group = VGroup(dot_C, line_CA, dot_A, dot_A_Text)
+        self.add(CA_Group)
 
+        #updaters
+        def updater_forth(mobj, dt):
+            mobj.rotate(dt,
+                        about_point=dot_C.get_center())
+
+        def updater_back(mobj, dt):
+            mobj.rotate(-dt,
+                        about_point=dot_C.get_center())
+
+        #run ball back to x-axis
+        self.play(Rotating(CA_Group,
+                            radians=0.5*PI,
+                            about_point=dot_C.get_center(),
+                            run_time=1))
+        
+        #CA_theta_tracker = ValueTracker(0)
+        #CA_Group.add_updater(
+        #    lambda x: x.become(CA_Group.copy()).rotate(
+        #        CA_theta_tracker.get_value() * DEGREES * -1,
+        #        about_point=dot_C.get_center()))
+        #self.play(CA_theta_tracker.animate.set_value(10))
+        self.wait(0.5)
+        CA_Group.add_updater(updater_back)
+        #elf.wait(0.5)
+        #CA_Group.remove_updater(updater_back)
+        #self.wait(0.5)
+        #CA_Group.add_updater(updater_forth)
+        #self.wait(0.5)
+        
         '''
         B_Color = ORANGE
         #draw the weight labeled B
