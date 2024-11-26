@@ -53,16 +53,6 @@ class TwoSwingingBalls(Scene):
         solution = odeint(pendulum_equation, state0, t, args=(g, L, b))
         index_tracker = ValueTracker(0)
 
-        #print(f"shape {solution.shape[0]} \n")
-        #mdegrees = 0
-        #mdegrees_hold = 0
-
-        #for x in solution:
-            #mdegrees = m.degrees(x[0])
-            #write_data_str = f"{x[0]:>8.4f} {mdegrees:>8.4f} {x[1]:>8.4f}"
-            #print(f"{write_data_str}")
-            #fileout.write(f"{write_data_str} \n")
-
         ax = Axes(
             x_range=[-1,10,1],
             y_range=[-1,10,1],
@@ -148,8 +138,8 @@ class TwoSwingingBalls(Scene):
         self.add(CA_Group)
 
         #run ball back to x-axis
-        for x in solution:
-            self.play(Rotating(CA_Group, radians=x[0], about_point=dot_C.get_center(), run_time=1))
+        #for x in solution:
+        #    self.play(Rotating(CA_Group, radians=x[0], about_point=dot_C.get_center(), run_time=1))
 
         #B_Color = ORANGE
         ##draw the weight labeled B
@@ -170,30 +160,5 @@ class TwoSwingingBalls(Scene):
         #arc_GBH = Arc(radius=radius, start_angle=start_angle, angle=arc_angle, arc_center=dot_D.get_center())
         #arc_GBH.set_color(B_Color)
         #self.play(Create(arc_GBH))
-
-        #updaters
-        #def updater_forth(mobj, dt):
-        #    mobj.rotate(dt,
-        #                about_point=dot_C.get_center())
-
-        #def updater_back(mobj, dt):
-        #    mobj.rotate(-dt,
-        #                about_point=dot_C.get_center())
-
-        #self.wait(0.2)
-        #CA_Group.add_updater(updater_forth)
-
-        #vals = [1, 2, 3, 4, 5]
-
-        #CA_theta_tracker = ValueTracker(0)
-        #CA_Group.add_updater(
-        #    lambda x: x.become(CA_Group.copy()).rotate(
-        #        CA_theta_tracker.get_value() * DEGREES,
-        #        about_point=dot_C.get_center()))
-        
-        #for x in vals:
-        #    self.play(CA_theta_tracker.animate.set_value(x))
-        #    self.wait(0.2)
-
 
         self.wait(2)
