@@ -13,7 +13,7 @@ class MovingAngle(Scene):
         )
 
         a = Angle(line1, line_moving, radius=0.5, other_angle=False)
-        
+
         #latex text to place theta symbol on angle drawing
         tex = MathTex(r"\theta").move_to(
             Angle(
@@ -35,7 +35,7 @@ class MovingAngle(Scene):
         a.add_updater(
             lambda x: x.become(Angle(line1, line_moving, radius=0.5, other_angle=False))
         )
-        
+
         #latex symbol updater
         tex.add_updater(
             lambda x: x.move_to(
@@ -45,8 +45,12 @@ class MovingAngle(Scene):
             )
         )
 
-        self.play(theta_tracker.animate.set_value(40))         #moves line angle from 110 to 40 degrees
-        self.play(theta_tracker.animate.increment_value(140))  #resets line angle to 180 degrees (140+40)
-        self.play(tex.animate.set_color(RED), run_time=0.5)    #turns theta symbol red
-        self.play(theta_tracker.animate.set_value(350))        #moves line from 180 to 350 degrees
+        #moves line angle from 110 to 40 degrees
+        self.play(theta_tracker.animate.set_value(40))
+        #resets line angle to 180 degrees (140+40)
+        self.play(theta_tracker.animate.increment_value(140))
+        #turns theta symbol red
+        self.play(tex.animate.set_color(RED), run_time=0.5)
+        #moves line from 180 to 350 degrees
+        self.play(theta_tracker.animate.set_value(350))
         self.wait(5)
