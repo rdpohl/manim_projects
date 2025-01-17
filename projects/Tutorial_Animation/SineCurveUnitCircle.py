@@ -7,28 +7,28 @@ from manim import *
 
 class SineCurveUnitCircle(Scene):
     def construct(self):
-        #x_start = np.array([-6,0,0])
-        #x_end = np.array([6,0,0])
+        x_start = np.array([-6,0,0])
+        x_end = np.array([6,0,0])
 
-        #y_start = np.array([-4,-2,0])
-        #y_end = np.array([-4,2,0])
+        y_start = np.array([-4,-2,0])
+        y_end = np.array([-4,2,0])
 
-        #x_axis = Line(x_start, x_end)
-        #y_axis = Line(y_start, y_end)
+        x_axis = Line(x_start, x_end)
+        y_axis = Line(y_start, y_end)
 
-        #self.add(x_axis, y_axis)
+        self.add(x_axis, y_axis)
         
         #self.add_x_labels()    #only gets error
-        #x_labels = [
-        #    MathTex("\\pi"),   #changed fromm \pi to \\pi
-        #    MathTex("2\\pi"),
-        #    MathTex("3\\pi"), 
-        #    MathTex("4\\pi"),
-        #]
+        x_labels = [
+            MathTex("\\pi"),   #changed fromm \pi to \\pi
+            MathTex("2\\pi"),
+            MathTex("3\\pi"), 
+            MathTex("4\\pi"),
+        ]
 
-        #for i in range(len(x_labels)):
-        #    x_labels[i].next_to(np.array([-1 + 2*i, 0, 0]), DOWN)
-        #    self.add(x_labels[i])
+        for i in range(len(x_labels)):
+            x_labels[i].next_to(np.array([-1 + 2*i, 0, 0]), DOWN)
+            self.add(x_labels[i])
 
         self.origin_point = np.array([-4,0,0])
         self.curve_start = np.array([-3,0,0])
