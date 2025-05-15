@@ -138,27 +138,27 @@ class TwoSwingingBalls(Scene):
         self.add(CA_Group)
 
         #run ball back to x-axis
-        #for x in solution:
-        #    self.play(Rotating(CA_Group, radians=x[0], about_point=dot_C.get_center(), run_time=1))
-
-        #B_Color = ORANGE
-        ##draw the weight labeled B
-        #dot_B   = Dot(ax.coords_to_point(5,2), radius=0.2, color=B_Color)
-        #dot_B_Text = Text('B').scale(0.5).next_to(dot_B, DOWN*0.3)
-        #dot_B_Text.set_color(B_Color)
-        #self.add(dot_B)
-        #self.play(Write(dot_B_Text))
+        for x in solution:
+            self.play(Rotating(CA_Group, radians=x[0], about_point=dot_C.get_center(), run_time=1))
+        
+        B_Color = ORANGE
+        #draw the weight labeled B
+        dot_B   = Dot(ax.coords_to_point(5,2), radius=0.2, color=B_Color)
+        dot_B_Text = Text('B').scale(0.5).next_to(dot_B, DOWN*0.3)
+        dot_B_Text.set_color(B_Color)
+        self.add(dot_B)
+        self.play(Write(dot_B_Text))
 
         #draw the line from D to B
-        #line_DB = Line()
-        #line_DB.put_start_and_end_on(dot_D.get_center(),
-        #                             dot_B.get_center())
-        #line_DB.set_color(B_Color)
-        #self.play(Write(line_DB))
+        line_DB = Line()
+        line_DB.put_start_and_end_on(dot_D.get_center(),
+                                     dot_B.get_center())
+        line_DB.set_color(B_Color)
+        self.play(Write(line_DB))
 
-        ##draw the template for arc GBH
-        #arc_GBH = Arc(radius=radius, start_angle=start_angle, angle=arc_angle, arc_center=dot_D.get_center())
-        #arc_GBH.set_color(B_Color)
-        #self.play(Create(arc_GBH))
+        #draw the template for arc GBH
+        arc_GBH = Arc(radius=radius, start_angle=start_angle, angle=arc_angle, arc_center=dot_D.get_center())
+        arc_GBH.set_color(B_Color)
+        self.play(Create(arc_GBH))
 
         self.wait(2)

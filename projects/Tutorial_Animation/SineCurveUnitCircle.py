@@ -7,28 +7,28 @@ from manim import *
 
 class SineCurveUnitCircle(Scene):
     def construct(self):
-        #x_start = np.array([-6,0,0])
-        #x_end = np.array([6,0,0])
+        x_start = np.array([-6,0,0])
+        x_end = np.array([6,0,0])
 
-        #y_start = np.array([-4,-2,0])
-        #y_end = np.array([-4,2,0])
+        y_start = np.array([-4,-2,0])
+        y_end = np.array([-4,2,0])
 
-        #x_axis = Line(x_start, x_end)
-        #y_axis = Line(y_start, y_end)
+        x_axis = Line(x_start, x_end)
+        y_axis = Line(y_start, y_end)
 
-        #self.add(x_axis, y_axis)
+        self.add(x_axis, y_axis)
         
-        #self.add_x_labels()    #only gets error
-        #x_labels = [
-        #    MathTex("\\pi"),   #changed fromm \pi to \\pi
-        #    MathTex("2\\pi"),
-        #    MathTex("3\\pi"), 
-        #    MathTex("4\\pi"),
-        #]
+        x_labels = [
+            MathTex("\\pi"),   #changed fromm \pi to \\pi
+            MathTex("2\\pi"),
+            MathTex("3\\pi"), 
+            MathTex("4\\pi"),
+        ]
+        #self.add_x_labels()    #this line causes error
 
-        #for i in range(len(x_labels)):
-        #    x_labels[i].next_to(np.array([-1 + 2*i, 0, 0]), DOWN)
-        #    self.add(x_labels[i])
+        for i in range(len(x_labels)):
+            x_labels[i].next_to(np.array([-1 + 2*i, 0, 0]), DOWN)
+            self.add(x_labels[i])
 
         self.origin_point = np.array([-4,0,0])
         self.curve_start = np.array([-3,0,0])
@@ -55,9 +55,9 @@ class SineCurveUnitCircle(Scene):
         def get_line_to_circle():
             return Line(origin_point, dot.get_center(), color=BLUE)
 
-        #def dot_on_sine(mob, dt):
-        #    self.t_offset += (dt * rate)
-        #    mob.move_to(orbit.point_from_proportion(self.t_offset % 1))
+        def dot_on_sine(mob, dt):
+            self.t_offset += (dt * rate)
+            mob.move_to(orbit.point_from_proportion(self.t_offset % 1))
 
         def get_line_to_curve():
             x = self.curve_start[0] + self.t_offset * 4
@@ -77,7 +77,7 @@ class SineCurveUnitCircle(Scene):
             return self.curve
 
         dot.add_updater(go_around_circle)
-        #dot_sine.add_updater(dot_on_sine)
+        dot_sine.add_updater(dot_on_sine)
 
         origin_to_circle_line = always_redraw(get_line_to_circle)
         dot_to_curve_line = always_redraw(get_line_to_curve)
@@ -88,5 +88,5 @@ class SineCurveUnitCircle(Scene):
         self.wait(8.5)
 
         dot.remove_updater(go_around_circle)
-        #dot_sine.remove_updater(dot_on_sine)
+        dot_sine.remove_updater(dot_on_sine)
     

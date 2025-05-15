@@ -44,7 +44,7 @@ state0 = [theta0, omega0]
 # Solve the differential equations
 solution = odeint(pendulum_equation, state0, t, args=(g, L, b))
 
-print(f"shape {solution.shape[0]} \n")
+#print(f"shape {solution.shape[0]} \n")
 mdegrees = 0
 mdegrees_hold = 0
 
